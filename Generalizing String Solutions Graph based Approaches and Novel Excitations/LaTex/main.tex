@@ -1,0 +1,323 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, graphicx, comment, amsthm}
+\usepackage{bbold, bm}
+\usepackage{color}
+\usepackage{leftidx}
+\usepackage{empheq}
+\usepackage{url}
+
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\nn}{\nonumber \\}
+\newcommand{\mbR}{{\mathbb{R}}}
+\newcommand{\mbZ}{{\mathbb{Z}}}
+\newcommand{\bcf}{\begin{figure}}
+\newcommand{\ecf}{\end{figure}}
+
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\sgn}{\operatorname{{\mathrm sgn}}}
+
+\newcommand{\SU}{\text{SU}}
+\def\ap{{\alpha}'}
+\newcommand{\SO}{\text{SO}}
+\newcommand{\su}{\mathfrak{su}}
+\newcommand{\so}{\mathfrak{so}}
+\newcommand{\rc}{\textcolor{red}}
+\newcommand{\cb}{\textcolor{blue}}
+
+
+
+\def\Tr{\text{Tr}}
+\def\Pexp{\overrightarrow{\exp}}
+
+\def\bea {\begin{eqnarray}}
+
+\def\eea {\end{eqnarray}}
+
+\def\tg{{\tilde{g}}}
+\def\A{{\bm A}}
+\def\B{{\bm B}}
+\def\e{\bm{e}}
+\def\x{\bm{x}}
+\def\X{\bm{X}}
+\def\Y{\bm{Y}}
+\def\E{\bm{E}}
+\def\F{\bm{F}}
+\def\T{\bm{T}}
+\def\G{\bm{G}}
+\def\P{\bm{P}}
+\def\l{\bm{\ell}}
+\def\t{\bm{\tau}}
+\def\rd{\mathrm{d}}
+\def\sslash{/ \! \! /}
+\def\J{\bm{J}}
+\def\u{\bm{u}}
+\def\K{\bm{K}}
+\def\L{\bm{\lambda}}
+\def\XI{\bm{\xi}}
+\def\bL{\bar{\bm{\lambda}}}
+\def\bXI{\bar{\bm{\xi}}}
+\def\bN{\bar{N}}
+\def\Z{\bm{Z}}
+\def\z{\bm{z}}
+\def\y{\bm{y}}
+\def\p{\bm{p}}
+\def\q{\bm{q}}
+\def\Q{\bm{Q}}
+\def\P{\bm{P}}
+\def\r{\bm{r}}
+\def\s{\bm{s}}
+\def\ip{{(i)}}
+\def\jp{{(j)}}
+\def\kp{{(k)}}
+\def\a{\bm{a}}
+\def\m{\bm{m}}
+\def\b{\bm{b}}
+\def\U{\bm{U}}
+\def\n{\bm{n}}
+\def\v{\mathsf{v}}
+\def\f{\mathsf{f}}
+\def\ed{\mathsf{b}}
+\def\c{\mathsf{c}}
+\def\half{\frac{1}{2}}
+\def\alp{\alpha'}
+\def\ha{\frac{\alpha'}{2}}
+\def\lI{\leftidx{^I} \! }
+\def\lJ{\leftidx{^J} \! }
+\def\L{\bm{L}}
+\def\R{\bm{R}}
+\def\a{\bm{\alpha}}
+\def\b{\bm{\beta}}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\Huge \textbf{Generalizing String Solutions: Graph-based Approaches and Novel Excitations}}
+\author{ Riddhiman Bhattacharya}
+\date{June 7, 2023}
+
+
+
+\maketitle
+
+\begin{abstract}
+    I'll try to present a new approach of solutions to the \textbf{Polyakov action}, constructed upon graphs, which generalize the standard open and closed bosonic strings. Open and closed strings are particular examples of this class of solutions. More general solutions can be found using larger graphs, where left- and right-moving modes are able to propagate through the graph. This allows for new excitations in the quantum theory which cannot be understood on a single string.
+\end{abstract}
+
+
+
+\section{\large \textbf{Classical theory on a graph}}
+\label{sec: classical}
+
+\textbf{Bosonic string theory} is defined by the \textbf{Polyakov action}, along with the extra terms to include the anti-symmetric $B$-field.
+
+\begin{equation}
+\label{poly action}
+\begin{aligned}
+S = - \frac{1}{4 \pi \alpha^\prime} \int d\tau d\sigma \partial_a X^\mu \cdot \partial^a X_\mu 
+- \frac{1}{2} \int d\tau d\sigma B_{\mu \nu} \partial_\tau X^\mu \partial_\sigma X^\nu \\
+- \frac{1}{6 \kappa^2} \int d^{26} x H_{\mu \nu \rho} H^{\mu \nu \rho} 
+\end{aligned}
+\end{equation}
+
+where, $H_{\mu \nu \rho} = \partial_\mu B_{\nu \rho} +  \partial_\nu B_{\rho \mu}+ \partial_\rho B_{\mu \nu}$ is the (anti-symmetric) field strength, and $\kappa$ is a constant with dimensions $[\kappa^2] = M^{6-D}$ in order to make this term dimensionless. The first two terms are integrals over the string worldsheet, and the last term is integral over all of space-time.
+
+We'll use vector notation for the string space-time coordinates $\X \leftrightarrow X^\mu$ where it's convenient; the index $a$ labels the string worldsheet coordinates $(\tau, \sigma)$.
+
+Usually, the fields $\X(\tau, \sigma)$ are given support on a single string which may be \textbf{open} (with Dirichlet or Neumann boundary conditions), or \textbf{closed} (with periodic boundary conditions). In this paper, I'll try to  give the fields support on a collection of strings that connect to other strings at their endpoints, i.e. graph. We'll see, this allows for slightly weaker boundary conditions which permit a broader class of excitations. This leads to new states in the quantum theory which cannot be realized using single strings.
+
+Let's consider a graph $\Gamma$ embedded within $\mathbb{R}^{25}$, which becomes a complex of two-dimensional surfaces (string world sheets) in the space-time $\mathbb{R} \times \mathbb{R}^{25}$. A graph is a set of one-dimensional strings (labelled $I$) which intersect only at their endpoints (or nodes $\n$), possibly with some open endpoints (nodes with only one string attached). The total action is a sum over the action $ \leftidx{^I}S$ for each string
+\be
+S = \sum_I \lI S.
+\ee
+
+Each string has unique worldsheet coordinates $\leftidx{^I}\tau \in (\infty, \infty)$ and $\leftidx{^I}\sigma \in [0, \pi]$. Let us take $x^0$ as the timelike target space coordinate. Then since each $\leftidx{^I}\tau$ is timelike and increases monotonically with $x^0$, we can use $x^0$ as the timelike coordinate for each string worldsheet, i.e. $\leftidx{^I}\tau = x^0 \equiv \tau$ for all $I$. This means that in general, $\lI \sigma$ and $\tau$ are coordinates for worldsheet $I$.
+
+A node $\n$ is a one-dimensional timelike surface in spacetime, which we may parameterize as $\n(\tau)$. The endpoint of all strings meeting at a node must satisfy
+\be
+\label{BC1}
+\lI \X \left( \tau, \lI \sigma = \sigma_n \right) = \n(\tau) \qquad \forall \tau, 
+\ee
+where $\sigma_n = \pi (0)$ for a string ingoing (outgoing) at the node $\n$. This is the first boundary condition.
+
+Variation of the action for each string yields
+\be
+\delta \lI S &=& \frac{1}{2 \pi \alpha' } \int d\tau \ d \lI \sigma \left( \partial^a \partial_a \lI X^\mu \right) \cdot \delta \lI X_\mu
++ \int d^{26} x \delta B_{\mu \nu} \left(\frac{1}{\kappa^2} \frac{\partial H^{\mu \nu \rho}}{\partial x^\rho} - j^{\mu \nu} \right) \nonumber \\
+&-& \frac{1}{4 \pi \alpha' } \int d \tau \left[ \partial_{\sigma} \lI X^\mu \cdot \delta \lI X_\mu \right]_{0}^{\pi} - \frac{1}{2} \int d \tau \left[ B_{\mu \nu} \partial_\tau \lI X^\mu \delta \lI X^\nu \right]_0^{\pi}
+\label{varS}
+\ee
+where the last two terms are boundary terms which must vanish in order that the variational principle is well defined. We have assumed the $B$-field vanishes on the boundary of space-time, and the boundary terms at the initial and final times are set to zero by setting $\delta \lI \X = 0$ at these times. We have defined the current
+\be
+j^{\mu \nu} = \frac{1}{2} \int d \tau d \sigma \delta^{26}(\bm{x} - \X (\tau, \sigma)) \left( \partial_\tau X^\mu \partial_\sigma X^\nu - 
+\partial_\tau X^\nu \partial_\sigma X^\mu \right)
+\ee
+which can be seen as a set of currents labelled by $\nu$; for each $\nu$, the current components are labelled by $\mu$. The zeroth component of a current in the charge density, so  $j^{0 \nu}$ is a vector of charge densities. The \textbf{Kalb-Ramond charge density} is a vector $\bm{j}^0$ with components $j^{0 k}$ for $k = 1, \ldots, 25$ (since $j^{00} = 0$ because the current is anti-symmetric).
+Each current labelled by $\nu$ is divergenceless $\partial_\mu j^{\mu \nu}$. The string charge is an integral over all of the space:
+\be
+\bm{Q} = \int d^{25} \bm{j}^0 .
+\ee
+
+
+For the open string, the first boundary term is usually handled by the standard boundary conditions: Neumann where $\partial_\sigma \lI \X = 0$ at the endpoints without restricting the position; Dirichlet where $\lI \X$ is set equal to a constant at the endpoints.  So,here, we find more freedom. We require that for all strings which intersect a common node, the variations of their endpoints must agree, i.e.
+\be
+\delta \lI \X(\tau, \sigma_n) = \delta \lJ \X(\tau, \sigma_n) =: \delta \X_n(\tau)  \qquad \forall I \cap J = n,
+\ee
+in order that they remain connected; $\delta \X_n(\tau)$ itself is arbitrary. Using this, and collecting the contributions at each node, we write this boundary term as
+\be
+\sum_n \left( \sum_{I:I\cap n \ne 0} \cos(\lI \sigma_n) \lI \X'(\tau, \sigma_n)\right) \cdot \delta \X_n = 0,
+\ee
+using a prime to denote a derivative with respect to $\lI \sigma$, and the $\cos$ factor is $+1$ for outgoing strings and $-1$ for ingoing strings.
+We see that this vanishes as long as the \textit{oriented sum} of derivatives $\lI \X'$ vanishes at each node, i.e. the sum of ingoing tangent vectors equals the sum of outgoing tangent vectors, i.e.
+\be
+\label{BC2}
+\sum_{I:I\cap n \ne 0} \cos(\lI \sigma_n) \lI \X'(\tau, \sigma_n) = 0
+\ee
+
+This is a generalization of Neumann boundary conditions which require each derivative to vanish \textit{separately}. One is also free to fix the position of a node to be on a D-brane, using Dirichlet boundary conditions $\delta X^\mu_n = 0$ for some or all of the spatial coordinates $\mu = 1, \ldots, 25$. Notice, that this implies \textbf{the total current flowing into a node is equal to the current flowing out of the node} (Zwiebach (16.23) and above).
+
+For the second boundary term, we add a counter boundary term, the contribution from each string is the same, up to a sign depending on whether it is ingoing or outgoing. The only way I can see to make this vanish is if we require as many ingoing strings as outgoing strings.
+
+As long as the above boundary conditions are met, the strings are guaranteed to remain connected as time evolves. The equation of motion for each string is
+\be
+\partial_a \partial^a \X = 0
+\ee
+where we'll focus for the moment on each single string and drop the string labels.
+
+In terms of lightcone coordinates:
+\be
+u = \tau - \sigma, \qquad v = \tau + \sigma,
+\ee
+the equation of motion is
+\be
+\partial_u \partial_v \X = 0.
+\ee
+This is solved by a superposition of right- and left-moving modes, $\X(u,v) = \X_0(u,v) + \R(u) + \L(v)$ where:
+\be
+\X_0(\tau, \sigma) &=& \q + \alpha' \p \tau + \alpha' \m \sigma, \\[3pt]
+\R(u) &=& i \sqrt{\frac{\alpha'}{2}} \sum_k \frac{1}{k} \a_k e^{-iku}, \\
+\L(v) &=& i \sqrt{\frac{\alpha'}{2}} \sum_k \frac{1}{k} \b_k e^{-ikv}.
+\ee
+The zero mode $\X_0$ is a straight line from the starting point $\q$ to the terminal point $\q + \pi \alpha' \m $, and this line shifts with velocity $\alpha' \p$ as $\tau$ evolves. $\R$ and $\L$ are respectively the right and left moving excitations.
+
+The boundary condition (\ref{BC1}) requires that the endpoints of adjacent strings remain attached at all times. Looking at the zero mode, this requires initially ($\tau = 0$) that
+\be
+\lI \q + \alpha' \m \lI \sigma_n = \lJ \q + \alpha' \m \lJ \sigma_n \qquad \forall \ I \cap J = n .
+\ee
+In order that this is true for all $\tau$ we also require that the momenta are the same for all strings on the graph $\Gamma$, i.e. 
+\be
+\lI \p = \lJ \p \qquad \forall \ \{I, J\} \in \Gamma.
+\ee
+Looking at the right and left moving components, the boundary condition requires at each $k$ that
+\be
+\left( \lI \a_k + \lI \b_k \right) \cos k \lI \sigma_n = \left( \lJ \a_k  + \lJ \b_k \right) \cos k \lI \sigma_n \qquad \forall \ I \cap J = n.
+\ee
+Note that, $\cos k \lI \sigma_n = 1$ for all outgoing strings ($\lI \sigma_n = 0$); $\cos k \lI \sigma_n = (-1)^k$ alternates in sign depending on $k$ for ingoing strings ($\lI \sigma_n = \pi$).
+
+These cosine modes are the ones which wiggle the string endpoints; this condition forces all strings meeting at a node to wiggle that endpoint in unison.
+
+The second boundary condition (\ref{BC2}) implies for the zero mode
+\be
+\sum_{I : I \cap n \ne 0} \lI \m = 0 .
+\ee
+For the excitations, we have at each $k$ that
+\be
+\sum_{I : I \cap n \ne 0} \left( \lI \a_k - \lI \b_k \right)  \cos k \sigma_n = 0. 
+\ee
+
+These are the sine modes that do not wiggle the nodes. The usual \textbf{Dirichlet boundary conditions} require each term to vanish separately, but here, we require only that the total sum vanishes. This is what permits novel excitations which are not allowed on a single string.
+
+
+
+\subsection{A Note on Units}
+
+Given that the action for a free string is given by \eqref{poly action}, and that the numerical factor has (natural) units of tension, $[ T ] = -2$, then the integrand must be dimensionless. This is obviously solved when $[ \X ] = 1$. Given the solution for $\X_0$ above, we must have that each term individually has units of length. When $\tau = 0$, $\X_0$ describes a straight line from $\q$ to $\q + c \m \pi$, where $c$ is some dimensionfull constant. Therefore, $[ c \m \sigma ] = 1 = [ c ] + 1 + 1$, so that $[ c ] = -1$. The correct factor to give $c$ the appropriate units would then be $1/\sqrt{\alpha'}$. Thus, we'll need to rewrite $\X_0$ as
+\be
+\X_0 = \q + \alpha' \p \tau + \frac{1}{\sqrt{\alpha'}} \m \sigma \ .
+\ee
+
+
+
+\subsection{\textbf{Particular Solutions to the Boundary Conditions}}
+
+Consider, applying the boundary conditions to some node $n$ where $N$ strings are incoming and $M$ strings are outgoing. In this case, when \eqref{BC1} is applied to $\X_0$ at $\tau = 0$ we have
+\be
+\sum^N_{I = 1} \lI \q + \pi \alpha' \, \lI \m = \sum^M_{J = 1}  \lJ \q \qquad \forall \ I \cap J = n .
+\ee
+When $t > 0$, the same boundary condition still applies; we can use the result above to simplify the $\tau > 0$ condition to
+\be
+\sum^N_{I = 1} \lI \p = \sum^M_{J=1} \lJ \p \qquad \forall \ \{I,J\} \in \Gamma .
+\ee
+Furthermore, \eqref{BC1} provides a restriction on the oscillators:
+\be
+\sum^N_{I=1} \sum^M_{J=1} \sum_{k \neq 0} \frac{e^{-ik \tau}}{k} \left( (-1)^{k+1} ( \lI \a_k + \lI \b_k) + \lJ \a_k + \lJ \b_k \right) = 0 \qquad \forall \ \{I,J\} \in \Gamma .
+\ee
+
+Applying the second boundary condition, \eqref{BC2}, to the zero mode $\X_0$ results in a trivial condition. When applied to the oscillators, we've that
+\be
+\sum_n \left[ \sum_{I=1}^N \sum_{J=1}^M \sum_{k \neq 0} e^{-ik\tau} \left( (-1)^{k+1} (\lI \a_k - \lI \b_k) + \lJ \a_k - \lJ \b_k \right) \right] = 0 \qquad \forall \ \{I,J\} \in \Gamma.
+\ee
+
+
+
+\section{\textbf{Lightcone Quantization}}
+
+Without any fields that couple to the metric, the stress-energy tensor $T_{ab}$ can be computed from the action \eqref{poly action} and must be equal to zero. This leads to the conditions
+\be
+\label{T cond1}
+T_{01} &=& \sum_{I: I \cap n \neq 0} \partial_\tau \lI \X \,  \partial_\sigma \lI \X = 0 , \\
+\label{T cond2}
+T_{00} = T_{11} &=& \frac{1}{2} \sum_{I: I \cap n \neq 0} \left( \partial_\tau \lI\X\right)^2 + \left(\partial_\sigma \lI\X \right)^2 = 0.
+\ee
+In terms of the worldsheet coordinates, $\{u, v\}$, \eqref{T cond1}~\!--~\!\eqref{T cond2} reduce to 
+\be
+\label{T cond}
+\sum_{I: I \cap n \neq 0} \left( \partial_u \lI \X \right)^2 = \sum_{I: I \cap n \neq 0} \left( \partial_v \lI \X \right)^2 = 0\ .
+\ee
+Consider the partial derivative of $\X(u,v)$ with respect to $u$: Since $\partial_u \L(v) = 0$, we're left with
+\be
+\partial_u \X(u,v) &=& \partial_u \X_0 + \partial_u \R(u) \nonumber \\
+			  &=& \alpha' ({\bm p} - {\bm m} ) + \sqrt{\frac{\alpha'}{2}}\sum_{k \neq 0} \a_k e^{-ik u} \nonumber \\
+			  &\equiv& \sqrt{\frac{\alpha'}{2}} \sum_k \a_k e^{-iku} \qquad \text{where} \quad \a_0 = \sqrt{2\alpha'} ({\bm p} - {\bm m}) \, .
+\ee
+A similar process can be applied to $\partial_v \X (u,v)$ which yields:
+
+\be
+\partial_v \X(u,v) &=& \partial_v \X_0 + \partial_v \L(v) \nonumber \\
+			  &=& \alpha' ( {\bm p} + {\bm m}) + \sqrt{\frac{\alpha'}{2}} \sum_{k \neq 0} \b_k e^{-ik v} \nonumber \\
+			  & \equiv & \sqrt{\frac{\alpha'}{2}} \sum_k \b_k e^{-ikv} \qquad \text{where} \quad \b_0 = \sqrt{2\alpha'} ({\bm p} + {\bm m}) \, .
+\ee
+Using these results, \eqref{T cond} gives
+\be 
+\label{virasoro}
+\sum_{I: I \cap n \neq 0} \lI {\bm L}_j = \sum_{I: I \cap n \neq 0} \lI \tilde{{\bm L}}_j = 0 \qquad \forall \, j \in \mathbb{Z} \, ,
+\ee
+where 
+\be
+\lI {\bm L}_j \equiv \frac{1}{2} \sum_k \lI \a_k \lI \a_{j-k} \qquad \text{and} \quad \lI \tilde{{\bm L}}_j = \frac{1}{2} \sum_k \lI \b_k \lI \b_{j-k}
+\ee
+are Virasoro generators. Note, that \eqref{virasoro} is a more relaxed version of the typical level-matching condition, as indicated at the end of \S~\!\ref{sec: classical}.
+
+
+
+
+\begin{thebibliography}{99}
+
+\bibitem{Tong} D.Tong,``Lectures on String Theory'', \url{http://www.damtp.cam.ac.uk/user/tong/string.html}.
+
+\bibitem{henn}  M. Henneaux in L. Brink and M. Henneaux, {\it Principles of String Theory}, Plenum Press, New York (1988).
+
+\bibitem{vil} A. Vilenkin, `Gravitational field of vacuum domain walls and strings', Phys. Rev. {\bf D23}, 852-857 (1981).
+
+\bibitem{Zwieb} B. Zwiebach, {\it A First Course in String Theory}, Cambridge University Press, Cambridge (2009).
+
+\end{thebibliography}
+
+\end{document}
